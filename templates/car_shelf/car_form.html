@@ -1,0 +1,15 @@
+{% extends 'base.html'}
+
+{% block title %} Редактировать {{ car.title}} {% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Редактировать информацию о машине</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+        <a href="{% url 'car_detail'  car.pk%}" class="btn btn-secondary">Отмена</a>
+    </form>
+</div>
+{% endblock %}

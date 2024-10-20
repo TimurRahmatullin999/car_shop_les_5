@@ -16,7 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from carshop.views import FirstView, hello, CarList, CarDelete, CarDetail, CarUpdate
 
 urlpatterns = [
+    path('', hello),
     path('admin/', admin.site.urls),
+    path('first_view/', FirstView.as_view(), name='first_view'),
+    # path('cars_list_template_view/', CarListTemplateView.as_view(), name='car_list_template_view'),
+    path('cars_list/', CarList.as_view(), name='car_list'),
+    path('cars/<int:pk>/', CarDetail.as_view(), name='car_detail'),
+    path('cars/<int:pk>/update/', CarUpdate.as_view(), name='car_update'),
+    path('cars/<int:pk>/delete/', CarDelete.as_view(), name='car_delete')
 ]

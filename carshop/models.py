@@ -1,4 +1,3 @@
-from tabnanny import verbose
 from django.db import models
 
 # Create your models here.
@@ -91,6 +90,9 @@ class Order(models.Model):
         verbose_name = 'Заказ'
         verbose_name_plural = 'Заказы'
         ordering = ['id_order']
+
+    def __str__(self):
+        return f"{self.meeting_date}, покупатель: {self.id_buyer}, машина:{self.id_car}"
 
 
 class HistoryOrder(models.Model):

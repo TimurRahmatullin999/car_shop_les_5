@@ -1,0 +1,17 @@
+{% extends "../base.html" %}
+{% block content %}
+    <h1>Машины:</h1>
+        <div class="row">
+            {% for car in cars %}
+            <div class="col-md-4 mt-4">
+                <div class="card h-100*">
+                    <div class="card-body">
+                        <h5 class="card-title">{{car.title}}</h5>
+                        <p class="card-text">{{car.price}} руб</p>
+                        <a href="{% url 'car_detail' car.pk %}" class="btn btn-primary">Детали</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+{% endblock %}
