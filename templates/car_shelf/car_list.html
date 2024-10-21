@@ -5,6 +5,7 @@
             {% for car in cars %}
             <div class="col-md-4 mt-4">
                 <div class="card h-100*">
+                    <img src="{{ car.image.url }}" class="card-img-top" alt="{{ car.title }}">
                     <div class="card-body">
                         <h5 class="card-title">{{car.title}}</h5>
                         <p class="card-text">{{car.price}} руб</p>

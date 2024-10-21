@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "../base.html" %}
 
 {% block title %} {{car.title}} {% endblock %}
 
@@ -8,11 +8,12 @@
         <div class="col-md-6">
             <h1>{{car.title}} </h1>
             <br>
-            <h5>Владелец: {{car.owner_id}} </h5>
+            <h5>Владелец: {{car.id_owner_id}} </h5>
+            <img src="{{ car.image.url }}" class="card-img-top" alt="{{ car.title }}">
             <br>
             <p><strong>Цена:</strong> {{car.price|default:"Цена не указана"}}</p>
             <p><strong>Пробег:</strong> {{car.mileage}}</p>
-            <p><strong>Описание:</strong> {{car.description|truncatechars:100}}</p>
+            <p><strong>Описание:</strong> {{car.description|truncatechars:10000}}</p>
             <p><strong>Длина описания:</strong> {{car.description|length}}</p>
 
             <a href="{% url 'car_list' %}" class="btn btn-secondary">Назад к списку машин</a>
