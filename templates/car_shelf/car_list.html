@@ -1,18 +1,42 @@
 {% extends "../base.html" %}
+{% load django_bootstrap5 %}
+
+
+{% block sidebar %}
+    <div class="col-md-3">
+        <div class="card-body">
+            <form method="get">
+                {% csrf_token %}
+                {{filter.form.as_p}}
+                    <button type="submit" class="btn btn-primary">Поиск</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+
 {% block content %}
+    <style>
+        .card-img-top {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+
     <h1>Машины:</h1>
-        <div class="row">
-            {% for car in cars %}
-            <div class="col-md-4 mt-4">
-                <div class="card h-100*">
-                    <img src="{{ car.image.url }}" class="card-img-top" alt="{{ car.title }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{car.title}}</h5>
-                        <p class="card-text">{{car.price}} руб</p>
-                        <a href="{% url 'car_detail' car.pk %}" class="btn btn-primary">Детали</a>
-                    </div>
+    <div class="row">
+        {% for car in cars %}
+        <div class="col-md-4 mt-4">
+            <div class="card h-100">
+                <img src="{{ car.image.url }}" class="card-img-top" alt="{{ car.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ car.title }}</h5>
+                    <p class="card-text">{{car.price}} руб</p>
+                    <a href="{% url 'car_detail' car.pk %}" class="btn btn-primary">Детали</a>
                 </div>
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
+    </div>
 {% endblock %}

@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from django.views.generic import TemplateView, ListView, DetailView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from carshop.models import Car, Buyer, Owner, Storage, Order, HistoryOrder
+from django_filters.views import FilterView
+from carshop import filters
 # Create your views here.
 
 def hello(requset):
@@ -22,10 +24,11 @@ class FirstView(View):
         context['cars'] = Car.objects.all()
         return context'''
 
-class CarList(ListView):
+class CarList(FilterView):
     model = Car
     template_name = 'car_shelf/car_list.html'
     context_object_name = 'cars'
+    filterset_class = filters.Car
 
 class CarDetail(DetailView):
     model = Car
