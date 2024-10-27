@@ -25,6 +25,9 @@
     </style>
 
     <h1>Машины:</h1>
+
+    <a href="{% url 'car_create' %}" class="btn btn-success mb-3">Добавить машину</a>
+
     <div class="row">
         {% for car in cars %}
         <div class="col-md-4 mt-4">

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse
-from django.views.generic import TemplateView, ListView, DetailView, UpdateView, DeleteView
+from django.views.generic import TemplateView, ListView, DetailView, UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
 from carshop.models import Car, Buyer, Owner, Storage, Order, HistoryOrder
 from django_filters.views import FilterView
@@ -47,3 +47,12 @@ class CarDelete(DeleteView):
     model = Car
     template_name = 'car_shelf/car_confirm_delete.html'
     success_url = reverse_lazy('car_list')
+
+
+class CarCreate(CreateView):
+    model = Car
+    template_name = 'car_shelf/car_create.html'
+    fields = ['title','image', 'price', 'mileage', 'description', 'id_owner', 'id_storage']
+
+    def get_success_url(self):
+        return reverse_lazy('car_list')

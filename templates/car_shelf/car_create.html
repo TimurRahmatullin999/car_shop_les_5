@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Машины{% endblock %}</title>
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+</head>
+<body>
+    <div class="container">
+        <h1>Создать новую машину</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_title">Название:</label>
+                {{ form.title }}
+            </div>
+            <div class="form-group">
+                <label for="id_image">Изображение:</label>
+                {{ form.image }}
+            </div>
+            <div class="form-group">
+                <label for="id_price">Цена:</label>
+                {{ form.price }}
+            </div>
+            <div class="form-group">
+                <label for="id_description">Описание:</label>
+                {{ form.description }}
+            </div>
+            <div class="form-group">
+                <label for="id_mileage">Пробег:</label>
+                {{ form.mileage }}
+            </div>
+            <div class="form-group">
+                <label for="id_id_owner">Владелец:</label>
+                {{ form.id_owner }}
+            </div>
+            <div class="form-group">
+                <label for="id_id_storage">Склад:</label>
+                {{ form.id_storage }}
+            </div>
+            <button type="submit">Создать</button>
+        </form>
+        <a href="{% url 'car_list' %}">Назад к списку машин</a>
+    </div>
+</body>
+</html>

@@ -22,6 +22,6 @@ class Car(django_filters.FilterSet):
     def filter_term(self, queryset, name, value):
         criteria = Q()
         for term in value.split():
-            criteria &= Q(title__icontains=term) |Q(description__icontains=term)
+            criteria &= Q(title__icontains=term) | Q(description__icontains=term)
 
         return queryset.filter(criteria).distinct()

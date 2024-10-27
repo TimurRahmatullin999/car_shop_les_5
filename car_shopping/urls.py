@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from carshop.views import FirstView, hello, CarList, CarDelete, CarDetail, CarUpdate
+from carshop.views import FirstView, hello, CarList, CarDelete, CarDetail, CarUpdate, CarCreate
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -28,5 +28,6 @@ urlpatterns = [
     path('cars_list/', CarList.as_view(), name='car_list'),
     path('cars/<int:pk>/', CarDetail.as_view(), name='car_detail'),
     path('cars/<int:pk>/update/', CarUpdate.as_view(), name='car_update'),
-    path('cars/<int:pk>/delete/', CarDelete.as_view(), name='car_delete')
+    path('cars/<int:pk>/delete/', CarDelete.as_view(), name='car_delete'),
+    path('cars/add/', CarCreate.as_view(), name='car_create')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
