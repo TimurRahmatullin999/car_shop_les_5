@@ -6,11 +6,33 @@ from django.urls import reverse_lazy
 from carshop.models import Car, Buyer, Owner, Storage, Order, HistoryOrder
 from django_filters.views import FilterView
 from carshop import filters
+from rest_framework import viewsets
+from carshop import serializers
+from carshop import models
 # Create your views here.
 
-def hello(requset):
-    return HttpResponse('hIIIIII')
 
+
+
+class OwnerAPI(viewsets.ModelViewSet):
+    queryset = models.Owner.objects.all()
+    serializer_class = serializers.Owner
+
+class StorageAPI(viewsets.ModelViewSet):
+    queryset = models.Storage.objects.all()
+    serializer_class = serializers.Storage
+
+class BuyerAPI(viewsets.ModelViewSet):
+    queryset = models.Buyer.objects.all()
+    serializer_class = serializers.Buyer
+
+class CarAPI(viewsets.ModelViewSet):
+    queryset = models.Car.objects.all()
+    serializer_class = serializers.Car
+
+class OrderAPI(viewsets.ModelViewSet):
+    queryset = models.Order.objects.all()
+    serializer_class = serializers.Order
 
 class FirstView(View):
     def get(self, request):

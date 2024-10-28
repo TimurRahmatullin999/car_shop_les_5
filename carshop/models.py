@@ -54,11 +54,11 @@ class Car(models.Model):
     price = models.PositiveIntegerField(verbose_name='Цена')
     description = models.TextField(verbose_name='Описание', blank=True)
     mileage = models.PositiveIntegerField(verbose_name='Пробег')
-    id_owner = models.ForeignKey(
+    owner = models.ForeignKey(
         Owner,
         on_delete=models.CASCADE
     )
-    id_storage = models.ForeignKey(
+    storage = models.ForeignKey(
         Storage,
         on_delete=models.CASCADE
     )
